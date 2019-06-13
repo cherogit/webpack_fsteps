@@ -1,0 +1,26 @@
+{
+  "name": "webpack_fsteps",
+  "version": "1.0.0",
+  "description": "webpack first steps",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherogit/webpack_fsteps.git"
+  },
+  "author": "cherogit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cherogit/webpack_fsteps/issues"
+  },
+  "homepage": "https://github.com/cherogit/webpack_fsteps#readme",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.1"
+  }
+}
