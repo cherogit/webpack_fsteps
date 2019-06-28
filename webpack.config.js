@@ -25,6 +25,14 @@ module.exports = {
                         loader: 'css-loader',
                         options: { sourceMap: true }
                     }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: 'src/js/postcss.config.js'
+                            }
+                        }
+                    }, {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
                     }
@@ -33,7 +41,7 @@ module.exports = {
         ]
     },
     devServer: {
-        overlay: true // Show errors on browser
+        overlay: true
     },
     plugins: [ // Регистрация плагинов.
         new MiniCssExtractPlugin({
