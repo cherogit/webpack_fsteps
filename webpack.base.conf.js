@@ -40,9 +40,6 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        overlay: true
-    },
     plugins: [ // Регистрация плагинов.
         new MiniCssExtractPlugin({
             filename: '[name].css',
