@@ -1,12 +1,13 @@
-const webpack = require('webpack');
+const webpack = require('webpack'); // создается для регистрации плагинов.
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map', // для быстрой сборки карты сайта.
   devServer: {
-    port: 8081,
+    contentBase: baseWebpackConfig.externals.paths.dist,
+    port: 3000,
     overlay: {
       warnings: true,
       errors: true

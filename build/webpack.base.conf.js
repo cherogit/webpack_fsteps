@@ -1,15 +1,29 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const PATHS = {
+    src: path.join(__dirname, '../src'),
+    dist: path.join(__dirname, '../dist'),
+    assets: 'assets/'
+}
+
 module.exports = {
+    externals: { // для доступа к PATHS из других configs
+        paths: PATHS
+    },
+
+
     watch: true,
     entry: {
-        app: './src/index.js'
+        app: PATHS.src // путь к index.js `${PATHS.src}/index.js`
     },
     output: {
-        filename: '[name].js', // на выходе будет файл app.js это делается для множественных точек входа
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist'
+        filename: `${PATHS.assets}js/[name].js`, // на выходе будет файл app.js это делается для множественных точек входа
+        path: PATHS.dist,
+        publicPath: '/'
     },
     module: {
         rules: [{
@@ -29,7 +43,7 @@ module.exports = {
                         options: {
                             sourceMap: true,
                             config: {
-                                path: 'src/js/postcss.config.js'
+                                path: `${PATHS.src}/js/postcss.config.js`
                             }
                         }
                     }, {
@@ -37,12 +51,34 @@ module.exports = {
                         options: { sourceMap: true }
                     }
                 ],
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]'
+                }
             }
         ]
     },
     plugins: [ // Регистрация плагинов.
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: `${PATHS.assets}css/[name].css`,
         }),
+        new HtmlWebpackPlugin({
+            hash: false,
+            template: `${PATHS.src}/index.html`,
+            filename: './index.html'
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: `${PATHS.src}/img`,
+                to: `${PATHS.assets}img`
+            },
+            {
+                from: `${PATHS.src}/static`,
+                to: ``
+            }
+        ])
     ],
 }
