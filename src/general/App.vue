@@ -6,9 +6,11 @@
 
         <template v-if="!isWidget">
             <main class="main">
-                main
+                <component :is="componentName" :data="data"></component>
             </main>
         </template>
+
+
 
         <footer-block
                 :layout="layout"
@@ -19,6 +21,9 @@
 <script>
     import HeaderBlock from "./Header.vue"
     import FooterBlock from "./Footer.vue"
+    import BrandsList from "./../components/brands/BrandsList.vue"
+
+
 
     export default {
         name: "App",
@@ -35,6 +40,8 @@
         components: {
             HeaderBlock,
             FooterBlock,
+
+            BrandsList,
         },
         mounted() {
 
@@ -43,6 +50,12 @@
             if (this.isWidget) {
                 this.isWidget = true
             }
+
+            if (data.result) {
+                this.data = data.result;
+            }
+
+            this.componentName = data.componentName;
 
             if (data.layout) {
                 this.layout = data.layout

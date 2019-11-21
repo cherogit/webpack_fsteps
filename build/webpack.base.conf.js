@@ -17,7 +17,7 @@ module.exports = {
     },
     watch: true,
     entry: {
-        app: PATHS.src // путь к index.js `${PATHS.src}/index.js`
+        app: PATHS.src, // путь к index.js `${PATHS.src}/index.js`
     },
     output: {
         filename: `${PATHS.dist}js/[name].js`, // на выходе будет файл app.js это делается для множественных точек входа
@@ -85,10 +85,10 @@ module.exports = {
             }
         ]
     },
-    resolve: { 
+    resolve: {
         alias: {
             '~': 'src',
-            'vue$': 'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.min.js'
         }
     },
     plugins: [ // Регистрация плагинов.
