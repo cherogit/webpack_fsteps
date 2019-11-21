@@ -7,8 +7,8 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
-    dist: path.join(__dirname, '../dist'),
-    assets: 'assets/'
+    template: path.join(__dirname, '../../'),
+    dist: 'dist/'
 }
 
 module.exports = {
@@ -20,8 +20,8 @@ module.exports = {
         app: PATHS.src // путь к index.js `${PATHS.src}/index.js`
     },
     output: {
-        filename: `${PATHS.assets}js/[name].[hash].js`, // на выходе будет файл app.js это делается для множественных точек входа
-        path: PATHS.dist,
+        filename: `${PATHS.dist}js/[name].js`, // на выходе будет файл app.js это делается для множественных точек входа
+        path: PATHS.template,
         publicPath: '/'
     },
     optimization: {
@@ -94,26 +94,26 @@ module.exports = {
     plugins: [ // Регистрация плагинов.
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: `${PATHS.assets}css/[name].[hash].css`,
+            filename: `${PATHS.dist}css/template_styles.css`,
         }),
-        new HtmlWebpackPlugin({
-            template: `${PATHS.src}/index.html`,
-            filename: './index.html',
-            // inject: false
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: `${PATHS.src}/index.html`,
+        //     filename: './index.html',
+        //     inject: false
+        // }),
         new CopyWebpackPlugin([
             {
-                from: `${PATHS.src}/${PATHS.assets}img`,
-                to: `${PATHS.assets}img`
+                from: `${PATHS.src}/assets/img`,
+                to: `${PATHS.dist}img`
             },
             {
-                from: `${PATHS.src}/${PATHS.assets}fonts`,
-                to: `${PATHS.assets}fonts`
+                from: `${PATHS.src}/assets/fonts`,
+                to: `${PATHS.dist}fonts`
             },
-            {
-                from: `${PATHS.src}/static`,
-                to: ``
-            }
+            // {
+            //     from: `${PATHS.src}/static`,
+            //     to: `../`
+            // }
         ])
     ],
 }
