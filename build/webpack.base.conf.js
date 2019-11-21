@@ -88,7 +88,7 @@ module.exports = {
     resolve: { 
         alias: {
             '~': 'src',
-            'vue$': 'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.min.js'
         }
     },
     plugins: [ // Регистрация плагинов.

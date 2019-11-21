@@ -4,6 +4,11 @@ const baseWebpackConfig = require('./webpack.base.conf')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.js'
+    }
+  },
   devtool: 'cheap-module-eval-source-map', // для быстрой сборки карты сайта.
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
