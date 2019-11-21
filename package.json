@@ -4,13 +4,9 @@
   "description": "webpack first steps",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server  --inline --progress --open --config ./build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",
-    "build_server": "webpack --config ./build/webpack.build.conf.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cherogit/webpack_fsteps.git"
+    "build_server": "webpack --config ./build/webpack.build_server.conf.js"
   },
   "author": "cherogit",
   "license": "MIT",
@@ -41,6 +37,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.7.2",
+    "vue-server-renderer": "^2.6.10",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.34.0",

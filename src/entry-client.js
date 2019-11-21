@@ -1,3 +1,6 @@
+import './js/common'
+import './assets/scss/main.scss'
+
 import app from './app';
 // import Vue from 'vue';
 // import VueAxios from 'vue-axios';

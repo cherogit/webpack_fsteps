@@ -24,18 +24,18 @@ module.exports = {
         path: PATHS.template,
         publicPath: '/'
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    name: 'vendors',
-                    test: /node_modules/,
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 name: 'vendors',
+    //                 test: /node_modules/,
+    //                 chunks: 'all',
+    //                 enforce: true
+    //             }
+    //         }
+    //     }
+    // },
     module: {
         rules: [{
                 test: /\.js$/,
