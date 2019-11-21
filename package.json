@@ -4,7 +4,7 @@
   "description": "webpack first steps",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",
     "build_server": "webpack --config ./build/webpack.build_server.conf.js"
   },
@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "vue": "^2.6.10",
+    "vue-awesome-swiper": "^3.1.3",
     "vuex": "^3.1.2"
   }
 }

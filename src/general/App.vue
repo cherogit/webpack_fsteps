@@ -10,7 +10,7 @@
             </main>
         </template>
 
-
+<!--        <vue-awesome-swiper></vue-awesome-swiper>-->
 
         <footer-block
                 :layout="layout"
@@ -23,7 +23,9 @@
     import FooterBlock from "./Footer.vue"
     import BrandsList from "./../components/brands/BrandsList.vue"
 
-
+    // import VueAwesomeSwiper from 'vue-awesome-swiper';
+    // Vue.component('VueAwesomeSwiper', VueAwesomeSwiper.swiper);
+    // Vue.component('VueAwesomeSwiperSlide', VueAwesomeSwiper.swiperSlide);
 
     export default {
         name: "App",

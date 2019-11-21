@@ -11,11 +11,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         }
     },
     devtool: 'cheap-module-eval-source-map', // для быстрой сборки карты сайта.
-    // entry: [
-    //     'webpack-dev-server/client?http://localhost:3000',
-    //     'webpack/hot/dev-server',
-    //     './src/index.js'
-    // ],
     devServer: {
         contentBase: baseWebpackConfig.externals.paths.dist,
         port: 3000,

@@ -1,8 +1,10 @@
 <template>
     <div class="brands-list">
-        <template v-for="item in list">
-            <brand-item :item="item"></brand-item>
-        </template>
+        <div class="container">
+            <template v-for="item in list">
+                <brand-item :item="item"></brand-item>
+            </template>
+        </div>
     </div>
 </template>
 <script>

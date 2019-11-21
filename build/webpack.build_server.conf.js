@@ -9,7 +9,7 @@ const buildServerWebpackConfig = merge(baseWebpackConfig, {
     },
     output: {
         filename: 'bundle_server.js', // на выходе будет файл app.js это делается для множественных точек входа
-        path: path.join(__dirname, './../../dist/js'),
+        path: path.join(__dirname, './../../scripts/'),
     },
     plugins: []
 })
