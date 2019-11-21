@@ -7,6 +7,7 @@ h1 {
     font-size: 16px;
     color: $mineShaft;
     border: 1px solid #000;
+    font-family: $MullerB;
     transition: .4s;
 
     @media screen and (min-width: $tablet) {
