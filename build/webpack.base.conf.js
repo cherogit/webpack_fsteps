@@ -77,7 +77,7 @@ module.exports = {
                     name: '[name].[ext]'
                 }
             }, {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]'
@@ -99,7 +99,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: `${PATHS.src}/index.html`,
             filename: './index.html',
-            // inject: false 
+            // inject: false
         }),
         new CopyWebpackPlugin([
             {
