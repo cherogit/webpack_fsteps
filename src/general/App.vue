@@ -6,6 +6,7 @@
 
         <template v-if="!isWidget">
             <main class="main">
+                {{ info }}
                 <component :is="componentName" :data="data"></component>
             </main>
         </template>
@@ -34,6 +35,7 @@
                 componentName: null,
                 layout: null,
                 isWidget: false,
+                info: null
             }
         },
         props: {},
@@ -45,7 +47,9 @@
             BrandsList,
         },
         mounted() {
-
+            this.$axios
+                .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then(response => (this.info = response));
         },
         created() {
             if (this.isWidget) {
@@ -57,6 +61,14 @@
             }
 
             this.componentName = data.componentName;
+
+            if (data.breadcrumbs) {
+                this.$root.stordasde.dispatch('updateBreadcrumbs', data.breadcrumbs);
+            }
+
+            if (data.pageTitle) {
+                this.$root.stordasde.dispatch('updatePageTitle', data.pageTitle);
+            }
 
             if (data.layout) {
                 this.layout = data.layout

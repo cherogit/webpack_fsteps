@@ -3,30 +3,28 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
-    state: {
+import {historyStore} from './store/history';
+import {breadcrumbs} from './store/breadcrumbs';
+import {pagetitle} from './store/pagetitle';
+import {modal} from './store/modal';
+import {error} from './store/error';
 
-    },
-    getters: {
-
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    },
+export default new Vuex.Store({
     modules: {
-
+        historyStore: historyStore,
+        breadcrumbs: breadcrumbs,
+        pagetitle: pagetitle,
+        modal: modal,
+        error: error
     }
 });
 
-// if (typeof (window) !== 'undefined') {
-//     window.onpopstate = function (event) {
-//         if (event.state) {
-//             store.commit('updateUrl', event.state.api);
-//         } else {
-//             window.location = history.location.pathname
-//         }
-//     };
-// }
+if (typeof (window) !== 'undefined') {
+    window.onpopstate = function (event) {
+        if (event.state) {
+            store.commit('updateUrl', event.state.api);
+        } else {
+            window.location = history.location.pathname
+        }
+    };
+}
