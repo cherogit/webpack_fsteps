@@ -1,18 +1,14 @@
 <template>
-    <!-- <transition v-on:enter="enter" v-on:leave="leave"> -->
-        <div v-if="isShowing">
-            <nav class="main-nav__list">
-                <template v-for="item in menu">
-                    <template v-if="item.selected">
-                        <span class="main-nav__list-link main-nav__list-link_selected"> {{ item.text }}</span>
-                    </template>
-                    <template v-else>
-                        <a class="main-nav__list-link" :href="item.link"> {{ item.text }}</a>
-                    </template>
-                </template>
-            </nav>
-        </div>
-    <!-- </transition> -->
+    <nav class="main-nav__list">
+        <template v-for="item in menu">
+            <template v-if="item.selected">
+                <span class="main-nav__list-link main-nav__list-link_selected">{{ item.text }}</span>
+            </template>
+            <template v-else>
+                <a class="main-nav__list-link" :href="item.link">{{ item.text }}</a>
+            </template>
+        </template>
+    </nav>
 </template>
 
 <script>
@@ -29,7 +25,6 @@
         },
         props: {
             menu: Array,
-            isShowing: Boolean,
         },
         computed: {
 
