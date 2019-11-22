@@ -1,4 +1,3 @@
-import './js/common'
 import './assets/scss/main.scss'
 
 import app from './app';

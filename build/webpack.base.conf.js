@@ -1,7 +1,5 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {VueLoaderPlugin} = require('vue-loader')
 
 const PATHS = {
@@ -16,7 +14,7 @@ module.exports = {
     },
     watch: true,
     entry: {
-        bundle: PATHS.src, // путь к index.js `${PATHS.src}/index.js`
+        bundle: `${PATHS.src}/entry-client.js`, // путь к index.js `${PATHS.src}/index.js`
     },
     output: {
         filename: `${PATHS.dist}js/[name].js`, // на выходе будет файл app.js это делается для множественных точек входа
@@ -97,7 +95,7 @@ module.exports = {
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: `template_styles.css`,
-            path: PATHS.template,
+            path: path.join(__dirname, '../../'),
         }),
     ],
 }
