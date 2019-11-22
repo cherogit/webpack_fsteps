@@ -47,6 +47,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
                 reload: false,
             }
         ),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(__dirname, '../src/assets/img'),
+                to: path.join(__dirname, '../../dist/img')
+            },
+            {
+                from: path.join(__dirname, '../src/assets/fonts'),
+                to: path.join(__dirname, '../../dist/fonts')
+            },
+        ])
     ]
 })
 

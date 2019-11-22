@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+const {VueLoaderPlugin} = require('vue-loader')
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
@@ -16,7 +16,7 @@ module.exports = {
     },
     watch: true,
     entry: {
-        app: PATHS.src, // путь к index.js `${PATHS.src}/index.js`
+        bundle: PATHS.src, // путь к index.js `${PATHS.src}/index.js`
     },
     output: {
         filename: `${PATHS.dist}js/[name].js`, // на выходе будет файл app.js это делается для множественных точек входа
@@ -37,51 +37,51 @@ module.exports = {
     // },
     module: {
         rules: [{
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: '/node_modules/' // Хватит исключения модулей, так как большинство библиотек под babel'ем.
-            }, {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loader: {
-                        scss: 'vue-style-loader!css-loader!sass-loader'
-                    }
-                }
-            }, {
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    MiniCssExtractPlugin.loader, // Лоадер - который позволяет разделять 'js' и 'css' файлы при 'import' в 'index.js'.
-                    {
-                        loader: 'css-loader',
-                        options: { sourceMap: true }
-                    }, {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true,
-                            config: {
-                                path: './postcss.config.js'
-                            }
-                        }
-                    }, {
-                        loader: 'sass-loader',
-                        options: { sourceMap: true }
-                    }
-                ],
-            }, {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
-                }
-            }, {
-                test: /\.(png|jpg|jpeg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: '/node_modules/' // Хватит исключения модулей, так как большинство библиотек под babel'ем.
+        }, {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+                loader: {
+                    scss: 'vue-style-loader!css-loader!sass-loader'
                 }
             }
+        }, {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                MiniCssExtractPlugin.loader, // Лоадер - который позволяет разделять 'js' и 'css' файлы при 'import' в 'index.js'.
+                {
+                    loader: 'css-loader',
+                    options: {sourceMap: true}
+                }, {
+                    loader: 'postcss-loader',
+                    options: {
+                        sourceMap: true,
+                        config: {
+                            path: './postcss.config.js'
+                        }
+                    }
+                }, {
+                    loader: 'sass-loader',
+                    options: {sourceMap: true}
+                }
+            ],
+        }, {
+            test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]'
+            }
+        }, {
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]'
+            }
+        }
         ]
     },
     resolve: {
@@ -93,7 +93,8 @@ module.exports = {
     plugins: [ // Регистрация плагинов.
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: `${PATHS.dist}css/template_styles.css`,
+            filename: `template_styles.css`,
+            path: PATHS.template,
         }),
     ],
 }
