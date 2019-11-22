@@ -87,6 +87,9 @@ module.exports = {
     resolve: {
         alias: {
             '~': 'src',
+            '@components': path.join(__dirname, '../src/components'),
+            '@general': path.join(__dirname, '../src/general'),
+            // '@fonts': path.join(__dirname, '../src/assets/fonts'),
             'vue$': 'vue/dist/vue.min.js'
         }
     },

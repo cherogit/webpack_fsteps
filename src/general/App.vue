@@ -11,7 +11,6 @@
         </template>
 
 <!--        <vue-awesome-swiper></vue-awesome-swiper>-->
-
         <footer-block
                 :layout="layout"
         ></footer-block>
@@ -20,8 +19,8 @@
 
 <script>
     import HeaderBlock from "./Header.vue"
-    import FooterBlock from "./Footer.vue"
-    import BrandsList from "./../components/brands/BrandsList.vue"
+    import FooterBlock from "@general/Footer.vue"
+    import BrandsList from "@components/brands/BrandsList.vue"
 
     // import VueAwesomeSwiper from 'vue-awesome-swiper';
     // Vue.component('VueAwesomeSwiper', VueAwesomeSwiper.swiper);
