@@ -11,7 +11,6 @@
             </main>
         </template>
 
-<!--        <vue-awesome-swiper></vue-awesome-swiper>-->
         <footer-block
                 :layout="layout"
         ></footer-block>
@@ -19,13 +18,27 @@
 </template>
 
 <script>
-    import HeaderBlock from "./Header.vue"
-    import FooterBlock from "@general/Footer.vue"
+    import Vue from 'vue'
+    import HeaderBlock from '@general/Header.vue'
+    import FooterBlock from '@general/Footer.vue'
+
+    import BreadCrumbs from '@general/breadcrumbs/Breadcrumbs.vue';
+    import PageTitle from '@general/pagetitle/PageTitle.vue';
+    import ContentPage from '@components/content/ContentPage.vue';
+    import BrandDetail from '@components/brands/BrandDetail.vue';
+    import NewsList from '@components/news/NewsList.vue';
+    import NewsDetail from '@components/news/NewsDetail.vue';
+    import Reviews from '@components/reviews/Reviews.vue';
+    import ReviewNew from '@components/reviews/ReviewNew.vue';
+    import Diary from '@components/diary/Diary.vue';
+    import DiaryElement from '@components/diary/DiaryElement.vue';
     import BrandsList from "@components/brands/BrandsList.vue"
 
-    // import VueAwesomeSwiper from 'vue-awesome-swiper';
-    // Vue.component('VueAwesomeSwiper', VueAwesomeSwiper.swiper);
-    // Vue.component('VueAwesomeSwiperSlide', VueAwesomeSwiper.swiperSlide);
+    import {resize} from './../mixins/resize';
+    Vue.mixin(resize);
+
+    import {collect} from './../mixins/collect';
+    Vue.mixin(collect);
 
     export default {
         name: "App",
@@ -42,9 +55,20 @@
         computed: {},
         components: {
             HeaderBlock,
-            FooterBlock,
 
+            BreadCrumbs,
+            PageTitle,
+            ContentPage,
             BrandsList,
+            BrandDetail,
+            NewsList,
+            NewsDetail,
+            Reviews,
+            ReviewNew,
+            Diary,
+            DiaryElement,
+
+            FooterBlock,
         },
         mounted() {
             this.$axios
@@ -63,11 +87,11 @@
             this.componentName = data.componentName;
 
             if (data.breadcrumbs) {
-                this.$root.stordasde.dispatch('updateBreadcrumbs', data.breadcrumbs);
+                this.$root.store.dispatch('updateBreadcrumbs', data.breadcrumbs);
             }
 
             if (data.pageTitle) {
-                this.$root.stordasde.dispatch('updatePageTitle', data.pageTitle);
+                this.$root.store.dispatch('updatePageTitle', data.pageTitle);
             }
 
             if (data.layout) {

@@ -1,27 +1,23 @@
 <template>
     <div class="brands-list">
-        <div class="container">
-            <template v-for="item in list">
-                <brand-item :item="item"></brand-item>
-            </template>
-        </div>
+        <diary-list :diaries="this.list"></diary-list>
     </div>
 </template>
 <script>
-    import BrandItem from './BrandItem.vue';
+    import DiaryList from './DiaryList.vue';
 
     export default {
-        name: 'BrandsList',
+        name: 'Diary',
         data() {
             return {
-                list: this.data.brands.items
+                list: this.data.diaries
             }
         },
         props: {
             data: [Object, Array],
         },
         components: {
-            BrandItem,
+            DiaryList,
         },
         watch: {
             
@@ -30,9 +26,6 @@
 
         },
         methods: {
-
-        },
-        mounted() {
 
         }
     }

@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {VueLoaderPlugin} = require('vue-loader')
 
@@ -97,5 +98,8 @@ module.exports = {
             filename: `template_styles.css`,
             path: path.join(__dirname, '../../'),
         }),
+        new webpack.ProvidePlugin({
+            Vue: 'vue'
+        })
     ],
 }

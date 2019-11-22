@@ -4,5 +4,7 @@ import store from './store'
 
 export default new Vue({
     render: h => h(App),
-    store
+    data: {
+        store: store
+    }
 })
