@@ -2,7 +2,6 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = {
@@ -96,24 +95,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `${PATHS.dist}css/template_styles.css`,
         }),
-        // new HtmlWebpackPlugin({
-        //     template: `${PATHS.src}/index.html`,
-        //     filename: './index.html',
-        //     inject: false
-        // }),
-        new CopyWebpackPlugin([
-            {
-                from: `${PATHS.src}/assets/img`,
-                to: `${PATHS.dist}img`
-            },
-            {
-                from: `${PATHS.src}/assets/fonts`,
-                to: `${PATHS.dist}fonts`
-            },
-            // {
-            //     from: `${PATHS.src}/static`,
-            //     to: `../`
-            // }
-        ])
     ],
 }

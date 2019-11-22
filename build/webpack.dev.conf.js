@@ -2,6 +2,8 @@ const webpack = require('webpack'); // создается для регистр�
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
