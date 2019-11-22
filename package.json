@@ -2,7 +2,6 @@
   "name": "webpack_fsteps",
   "version": "1.0.0",
   "description": "webpack first steps",
-  "main": "app.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",

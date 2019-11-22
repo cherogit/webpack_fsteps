@@ -9,7 +9,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.runtime.js'
+            'vue$': 'vue/dist/vue.js'
         }
     },
     devtool: 'cheap-module-eval-source-map', // для быстрой сборки карты сайта.
@@ -17,12 +17,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         contentBase: baseWebpackConfig.externals.paths.dist,
         port: 3000,
         writeToDisk: true,
+        disableHostCheck: true,
         overlay: {
             warnings: true,
             errors: true
         },
     },
-
     plugins: [
         new webpack.SourceMapDevToolPlugin({
             filename: '[file].map'
@@ -30,7 +30,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         new BrowserSyncPlugin({
                 host: 'localhost',
                 port: 3000,
-                proxy: 'http://vertex-club.local',
+                proxy: 'http://vertex-club.local/',
                 files: [
                     {
                         match: ['./src'],

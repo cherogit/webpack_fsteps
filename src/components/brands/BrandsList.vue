@@ -1,6 +1,7 @@
 <template>
     <div class="brands-list">
         <div class="container">
+            asfds
             <template v-for="item in list">
                 <brand-item :item="item"></brand-item>
             </template>
@@ -31,6 +32,9 @@
         },
         methods: {
 
+        },
+        mounted() {
+            this.test = sds
         }
     }
 </script>
