@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const {VueLoaderPlugin} = require('vue-loader')
 
 const PATHS = {
@@ -35,52 +36,80 @@ module.exports = {
     //     }
     // },
     module: {
-        rules: [{
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: '/node_modules/' // Хватит исключения модулей, так как большинство библиотек под babel'ем.
-        }, {
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                loader: {
-                    scss: 'vue-style-loader!css-loader!sass-loader'
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: '/node_modules/' // Хватит исключения модулей, так как большинство библиотек под babel'ем.
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loader: {
+                        scss: 'vue-style-loader!css-loader!sass-loader'
+                    }
                 }
-            }
-        }, {
-            test: /\.scss$/,
-            use: [
-                'style-loader',
-                MiniCssExtractPlugin.loader, // Лоадер - который позволяет разделять 'js' и 'css' файлы при 'import' в 'index.js'.
-                {
-                    loader: 'css-loader',
-                    options: {sourceMap: true}
-                }, {
-                    loader: 'postcss-loader',
-                    options: {
-                        sourceMap: true,
-                        config: {
-                            path: './postcss.config.js'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader, // Лоадер - который позволяет разделять 'js' и 'css' файлы при 'import' в 'index.js'.
+                    {
+                        loader: 'css-loader',
+                        options: {sourceMap: true}
+                    }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: './postcss.config.js'
+                            }
+                        }
+                    }, {
+                        loader: 'sass-loader',
+                        options: {sourceMap: true}
+                    }
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-sprite-loader',
+                        options: {
+                            extract: true,
+                            spriteFilename: './dist/sprite/icons.svg',
+                            esModule: false
+                        }
+                    },
+                    {
+                        loader: 'svgo-loader',
+                        options: {
+                            plugins: [
+                                {removeTitle: true},
+                                {convertColors: {shorthex: false}},
+                                {convertPathData: false}
+                            ]
                         }
                     }
-                }, {
-                    loader: 'sass-loader',
-                    options: {sourceMap: true}
-                }
-            ],
-        }, {
-            test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]'
-            }
-        }, {
-            test: /\.(png|jpg|jpeg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]'
-            }
-        }
+                ]
+            },
+            // {
+            //     test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: '[name].[ext]'
+            //     }
+            // },
+            // {
+            //     test: /\.(png|jpg|jpeg|gif|svg)$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: '[name].[ext]'
+            //     }
+            // }
         ]
     },
     resolve: {
@@ -100,6 +129,12 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             Vue: 'vue'
-        })
+        }),
+        new SpriteLoaderPlugin({
+            plainSprite: true,
+            spriteAttrs: {
+                id: 'my-custom-sprite-id'
+            }
+        }),
     ],
 }

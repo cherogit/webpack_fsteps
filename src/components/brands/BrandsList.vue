@@ -4,10 +4,15 @@
             <template v-for="item in list">
                 <brand-item :item="item"></brand-item>
             </template>
+            <svg-sprite :icon="'chevron'"></svg-sprite>
+            <svg-sprite :icon="'close'"></svg-sprite>
         </div>
     </div>
 </template>
 <script>
+    import SvgSprite from "../../helper/SvgSprite.vue"
+
+
     import BrandItem from './BrandItem.vue';
 
     export default {
@@ -22,6 +27,7 @@
         },
         components: {
             BrandItem,
+            SvgSprite
         },
         watch: {
             

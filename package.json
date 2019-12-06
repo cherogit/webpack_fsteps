@@ -40,6 +40,8 @@
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "svg-sprite-loader": "^4.1.6",
+    "svgo-loader": "^2.2.1",
     "vue-loader": "^15.7.2",
     "vue-server-renderer": "^2.6.10",
     "vue-style-loader": "^4.1.2",
