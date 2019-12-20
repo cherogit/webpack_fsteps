@@ -1,0 +1,9 @@
+$fontPath: './_webpack/src/assets/fonts/';
+
+@font-face {
+    font-family: 'MullerBold';
+    src: url('/local/templates/main/dist/fonts/mullerbold.woff2') format('woff2'),
+    url('/local/templates/main/dist/fonts/mullerbold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
